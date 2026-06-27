@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Page, Card, TextField, Button, BlockStack } from "@shopify/polaris";
+import { useAppBridge } from "@shopify/app-bridge-react";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 function Announcement() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const shopify = useAppBridge(); 
 
   const saveAnnouncement = async () => {
     if (!message.trim()) return;
@@ -11,16 +15,17 @@ function Announcement() {
     setLoading(true);
 
     try {
-      await fetch("http://localhost:5000/announcement", {
+      await fetch(`${API_URL}/announcement`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
       });
 
       setMessage("");
-      alert("Saved!");
+     shopify.toast.show("Announcement saved!");
     } catch (err) {
       console.log(err);
+       shopify.toast.show("Failed to save announcement", { isError: true });
     } finally {
       setLoading(false);
     }
