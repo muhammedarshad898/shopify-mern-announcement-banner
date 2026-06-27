@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
   createAnnouncement,
-} = require("../controllers/announcementController");
+} = require("../controllers/announcementcontroller");
 
 router.post("/announcement", createAnnouncement);
 
