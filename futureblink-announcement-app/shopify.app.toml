@@ -2,7 +2,7 @@
 
 client_id = "5c21347c324626089a153502e817472b"
 name = "futureblink-announcement-app"
-application_url = "https://example.com"
+application_url = "https://shopify-mern-announcement-banner-1.onrender.com"
 embedded = true
 
 [access_scopes]
@@ -44,7 +44,7 @@ api_version = "2026-07"
   topics = [ "app/scopes_update" ]
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://shopify-mern-announcement-banner-1.onrender.com/auth/callback" ]
 
 [build]
 include_config_on_deploy = true
